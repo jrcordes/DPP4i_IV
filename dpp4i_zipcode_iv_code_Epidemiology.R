@@ -2423,16 +2423,6 @@ tecos_phys <- filter(tecos, YEAR >= 2014)
 table(tecos_phys$EXPOSURE, tecos_phys$OUTCOME)
 tecos_phys %>% group_by(EXPOSURE) %>% summarise(OUTCOME_SUM = sum(OUTCOME))
 
-# Unadjusted risk ratio analysis linear regression 6-month follow-up
-tecos_model_crude_linear_6mo <- glm(data = tecos_phys, formula = OUTCOME_6MO ~ EXPOSURE,
-                                    na.action = na.exclude)
-summary(tecos_model_crude_linear_6mo)
-
-# Unadjusted risk ratio analysis linear regression 1-year follow-up
-tecos_model_crude_linear_1yr <- glm(data = tecos_phys, formula = OUTCOME_1YR ~ EXPOSURE,
-                                    na.action = na.exclude)
-summary(tecos_model_crude_linear_1yr)
-
 # Unadjusted risk ratio analysis linear regression all follow-up
 tecos_model_crude_linear <- glm(data = tecos_phys, formula = OUTCOME ~ EXPOSURE,
                                 na.action = na.exclude)
